@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AutoUpdater</string>
-    <string name="updateUrl"></string>
+    <string name="updateUrl">https://www.dropbox.com/s/238gt4lubdf96j0/something.txt?dl=0</string>
     <string name="notification_description">You are hereby notified</string>
 </resources>
 

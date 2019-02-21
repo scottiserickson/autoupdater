@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -56,9 +58,18 @@ public class MainActivity extends AppCompatActivity {
         //TODO: First I wanted to store my update .apk file on internal storage for my app but apparently android does not allow you to open and install
         //aplication with existing package from there. So for me, alternative solution is Download directory in external storage. If there is better
         //solution, please inform us in comment
-        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-        String fileName = "AutoUpdater.apk";
-        destination += fileName;
+
+
+        //CHECK IF MAKING DIRECTORY WORKS
+        String folder_main = DIRECTORY_DOWNLOADS;
+        File f = new File(Environment.getExternalStorageDirectory(), folder_main);
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+
+        String destination = Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS) + "/"; //directory may not exist
+        String fileName = "something.txt"; //filename
+        destination += fileName; //
         final Uri uri = Uri.parse("file://" + destination);
 
         //Delete update file if exists
@@ -146,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         //TODO: First I wanted to store my update .apk file on internal storage for my app but apparently android does not allow you to open and install
         //aplication with existing package from there. So for me, alternative solution is Download directory in external storage. If there is better
         //solution, please inform us in comment
-        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
+        String destination = Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS) + "/";
         String fileName = "AutoUpdater.apk";
         destination += fileName;
         final Uri uri = Uri.parse("file://" + destination);
