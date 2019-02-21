@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AutoUpdater</string>
+    <string name="notification_description">You are hereby notified</string>
+</resources>
+
